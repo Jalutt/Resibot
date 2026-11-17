@@ -4,13 +4,19 @@ from flask import Flask, request
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "9066180553:AAHM1scmYxpcKKO9LEoUeF1pIiFrQE44DIU")
+# Fetch token from Render Environment Variables
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "9066180553:AAGR1tZ-bYcHvk0zeA7I4hjWFe351jVpF9w")
+
+# Render automatically sets RENDER_EXTERNAL_URL (e.g., https://your-app.onrender.com)
+# If not set, replace the fallback string with your actual Render URL
+RENDER_URL = os.environ.get("RENDER_EXTERNAL_URL", "https://resibot-ywdm.onrender.com")
+
 bot = telebot.TeleBot(TOKEN, threaded=False)
 app = Flask(__name__)
 
 DB_FILE = "budget_bot.db"
 
-# Temporary state storage for calculator inputs: {user_id: {"action": ..., "category": ..., "sub": ..., "amount": "..."}}
+# Temporary state storage for calculator inputs
 user_states = {}
 
 def init_db():
@@ -278,6 +284,11 @@ def webhook():
 @app.route("/", methods=['GET'])
 def index():
     return "Bot is running!", 200
+
+# Register the webhook when the app is loaded by Gunicorn/Render
+if RENDER_URL and TOKEN != "YOUR_NEW_BOT_TOKEN_HERE":
+    bot.remove_webhook()
+    bot.set_webhook(url=f"{RENDER_URL.rstrip('/')}/{TOKEN}")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
