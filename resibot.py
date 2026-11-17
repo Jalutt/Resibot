@@ -85,7 +85,7 @@ def get_welcome_message(user_id, cash, ewallet):
             f"🎀 Bestie Reminder: Smart budgeting isn't about restricting yourself—it's about making "
             f"sure you always have enough for your needs AND your well-deserved treats! Track every peso and watch your savings glow! ✨💅"
         )
-    elif user_id == 8925978115:
+    elif user_id == 743663528:
         return (
             f"🏎️🔥 Yo JL! Welcome back to your Budget Tracker! 🔥🏎️\n"
             f"Here’s where your stats stand right now:\n"
