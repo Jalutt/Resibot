@@ -4,7 +4,7 @@ from flask import Flask, request
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "9066180553:AAHM1scmYxpcKKO9LEoUeF1pIiFrQE44DIU")
 bot = telebot.TeleBot(TOKEN, threaded=False)
 app = Flask(__name__)
 
