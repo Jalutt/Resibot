@@ -9,7 +9,7 @@ TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "9066180553:AAGR1tZ-bYcHvk0zeA7I4hj
 
 # Render automatically sets RENDER_EXTERNAL_URL (e.g., https://your-app.onrender.com)
 # If not set, replace the fallback string with your actual Render URL
-RENDER_URL = os.environ.get("RENDER_EXTERNAL_URL", "https://resibot-ywdm.onrender.com")
+RENDER_URL = os.environ.get("RENDER_EXTERNAL_URL", "https://resibot-1-7npe.onrender.com")
 
 bot = telebot.TeleBot(TOKEN, threaded=False)
 app = Flask(__name__)
